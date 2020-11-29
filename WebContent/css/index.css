@@ -1,32 +1,44 @@
-
-*{
-	box-sizing:border-box;
+.container{
+  background-image: url('../images/human-machine-hand-homepage.svg');
+  background-repeat: no-repeat;
+  width: 90%; 
+  height: 100%;
+  border: 1px solid blue;
+  box-sizing: border-box;
+  background-position: center 3em;
+  background-size: contain;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 2em;
+  
+ 
 }
 
-.button {
-  background-color: #ed7d0c;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+.mirror{
+  transform: scaleX(-1);
 }
 
-.header{
-	display:grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 80px 80px 80px;
+.logo{
+  margin-top: 3em;
+  /* width: 5em; */
+  padding-left: 3em;
 }
-
-.header-logo-div{
-	text-align:center;
+.input{
+  /* margin-top: 10%; */
+  margin-left: 60%;
 }
-
-.header-text-div{
-	text-align:center
+.button{
+  margin-top: 10%;
+  margin-left: 80%;
+  margin-bottom: 5em;
+  color: #d8d8dd;
+  width: 10em;
 }
-.header-button-div{
-	text-align:center
+H3{
+  padding-top: 10%;
+  margin-left: 60%;
+  color: #d8d8dd;
+  
 }
