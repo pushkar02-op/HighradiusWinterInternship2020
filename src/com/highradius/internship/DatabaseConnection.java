@@ -3,16 +3,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException; 
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
 import com.highradius.internship.Response;
 
 public class DatabaseConnection {
+	
 	public boolean validate(Response responce)
 	        throws SQLException, ClassNotFoundException 
 	       
-	    { 
-	        // Initialize all the information regarding 
-	        // Database Connection 
+	    {  
 		    boolean status=false;
 	        String dbDriver = "com.mysql.jdbc.Driver"; 
 	        String dbURL = "jdbc:mysql:// localhost:3306/"; 
@@ -29,13 +30,13 @@ public class DatabaseConnection {
 	        	            .prepareStatement("select user_level from user_details where username = ? and password = ? ")) {
 	        	            preparedStatement.setString(1, responce.getUsername());
 	        	            preparedStatement.setString(2, responce.getPassword());
-	        	            System.out.println(responce.getUsername());
+	        	          
 	        	            System.out.println(preparedStatement);
 	        	            ResultSet rs = preparedStatement.executeQuery();
 	        	            status = rs.next();
 	        	            String level=rs.getString("user_level");
-//	        	            Response resp = new Response();
-//	        	            resp.setUserLevel(level);
+	        	            System.out.println(level);
+//        	  	            responce.setUserLevel(level);
 	        	            
 	        	         
 	        	            }
@@ -46,7 +47,6 @@ public class DatabaseConnection {
 	        	            return status;
 	        	            
 	        	        }
-
 	        	        private void printSQLException(SQLException ex) {
 	        	            for (Throwable e: ex) {
 	        	                if (e instanceof SQLException) {
@@ -61,5 +61,8 @@ public class DatabaseConnection {
 	        	                    }
 	        	                }
 	        	            }
-	    } 
+	    }
+	        
+	        	      
+	        	        
 }

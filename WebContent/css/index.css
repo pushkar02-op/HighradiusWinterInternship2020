@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   width: 90%; 
   height: 100%;
-  border: 1px solid blue;
+  border: 1px solid rgb(144, 150, 152);
   box-sizing: border-box;
   background-position: center 3em;
   background-size: contain;
@@ -11,11 +11,15 @@
   margin-bottom: 4%;
   margin-left: 5%;
   margin-right: 5%;
-  border-radius: 2em;
-  
+  border-radius: 2em; 
+  float: right;
  
 }
-
+body
+{
+  font-family: "Century Gothic", sans-serif;
+  
+}
 .mirror{
   transform: scaleX(-1);
 }
@@ -28,13 +32,25 @@
 .input{
   /* margin-top: 10%; */
   margin-left: 60%;
+
+}
+input[type=text], input[type=password]{
+
+  background-color: #e6f6f7;
+  	border: none;
+  	border-bottom: 2px solid #fc7500;
+  	width: 70%;
+  	padding: 2% 0;
 }
 .button{
   margin-top: 10%;
   margin-left: 80%;
   margin-bottom: 5em;
-  color: #d8d8dd;
-  width: 10em;
+  color: #838a8e;
+  width: 20em;
+}
+input[type=submit]{
+  font-size: 20px;
 }
 H3{
   padding-top: 10%;

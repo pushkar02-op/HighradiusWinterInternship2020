@@ -4,10 +4,10 @@ tr:nth-child(even) {
 
 .board{
     margin-top:  5%;
-    margin-left:  .5em;
-    margin-right: .5em;
+    margin-left:  1em;
+    margin-right: 1em;
     padding-top: 1%;
-    border: 8px solid rgb(213, 210, 210);
+    border: 8px solid rgb(165, 159, 159);
 }
 
 .dashlogo{
@@ -22,3 +22,39 @@ tr:nth-child(even) {
 img{
     padding-top: 1em;
 }
+.pages{
+    display: flex;
+  flex-wrap: nowrap;
+  background-color: white;
+}
+
+.pages > div{
+    background-color: #d3e4eb;
+    width: 50px;
+    margin: 10px;
+    text-align: center;
+    line-height: 65px;
+    font-size: 20px;
+    display: inline;
+    border-radius: .5em;
+}
+.page-item{
+    display: flex;
+    flex-wrap: nowrap;
+  background-color: white;
+}
+a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }

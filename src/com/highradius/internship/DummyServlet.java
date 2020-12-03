@@ -31,23 +31,22 @@ public class DummyServlet extends HttpServlet {
 		Response resp = new Response();
 		resp.setUsername(name);
 		resp.setPassword(pwd);
-		level=resp.getUserLevel();
-//		level=Integer.parseInt(resp.getUserLevel());
-		System.out.println(level);
+		level=resp.getLevel();
+		
         try {
             if (dbconn.validate(resp)) {
-//            	if(level==1) {
-            		response.sendRedirect("dash.jsp");
-//            	}
-//            	else {
-//            		response.sendRedirect("dash1.jsp");
-//            	}
-//            
-                
+            	
+            	HttpSession session = request.getSession();
+            	session.setAttribute("name", name);
+            	session.setAttribute("level", level);
+            	response.sendRedirect("employee");
+            	
+            	
+            	
                
             } else {
-                HttpSession session = request.getSession();
-                response.sendRedirect("index.html");
+               
+                response.sendRedirect("index.jsp");
                 
             }
         } catch (ClassNotFoundException | SQLException | NumberFormatException  e) {
