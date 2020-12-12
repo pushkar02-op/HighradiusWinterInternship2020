@@ -4,12 +4,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.*;
+
 import com.highradius.internship.Response;
 
 public class DatabaseConnection {
-	
+	private String level;
 	public boolean validate(Response responce)
 	        throws SQLException, ClassNotFoundException 
 	       
@@ -34,11 +33,11 @@ public class DatabaseConnection {
 	        	            System.out.println(preparedStatement);
 	        	            ResultSet rs = preparedStatement.executeQuery();
 	        	            status = rs.next();
-	        	            String level=rs.getString("user_level");
-	        	            System.out.println(level);
-//        	  	            responce.setUserLevel(level);
+	        	            if(status) {
+	        	             this.level=rs.getString("user_level");
 	        	            
-	        	         
+	        	            }
+	        	            rs.close();
 	        	            }
 	        	            catch (SQLException e) {
 	        	                
@@ -63,6 +62,9 @@ public class DatabaseConnection {
 	        	            }
 	    }
 	        
-	        	      
+	        	      public String getLevel(){
+	        	    	 
+	        	    	  return level;
+	        	      }
 	        	        
 }

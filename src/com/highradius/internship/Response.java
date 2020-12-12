@@ -10,11 +10,11 @@ public class Response implements Serializable {
     private static final long serialVersionUID = 1L;
     private String username;
     private String password;
-    private String level;
-    private String order_id;
+//    private String level;
+    private int order_id;
     private String cust_name;
-    private String cust_id;
-    private String order_amt;
+    private int cust_id;
+    private int order_amt;
     private String appr_status;
     private String approved_by;
     private String notes;
@@ -31,16 +31,16 @@ public class Response implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getLevel() {
-		return level;
-	}
-	public void setLevel(String level) {
-		this.level = level;
-	}
-	public String getOrder_id() {
+//	public String getLevel() {
+//		return level;
+//	}
+//	public void setLevel(String level) {
+//		this.level = level;
+//	}
+	public int getOrder_id() {
 		return order_id;
 	}
-	public void setOrder_id(String order_id) {
+	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
 	}
 	public String getCust_name() {
@@ -49,16 +49,16 @@ public class Response implements Serializable {
 	public void setCust_name(String cust_name) {
 		this.cust_name = cust_name;
 	}
-	public String getCust_id() {
+	public int getCust_id() {
 		return cust_id;
 	}
-	public void setCust_id(String cust_id) {
+	public void setCust_id(int cust_id) {
 		this.cust_id = cust_id;
 	}
-	public String getOrder_amt() {
+	public int getOrder_amt() {
 		return order_amt;
 	}
-	public void setOrder_amt(String order_amt) {
+	public void setOrder_amt(int order_amt) {
 		this.order_amt = order_amt;
 	}
 	public String getAppr_status() {

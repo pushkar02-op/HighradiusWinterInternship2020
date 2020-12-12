@@ -29,19 +29,20 @@ public class DummyServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String level;
 		Response resp = new Response();
+		
 		resp.setUsername(name);
 		resp.setPassword(pwd);
-		level=resp.getLevel();
+		
 		
         try {
             if (dbconn.validate(resp)) {
             	
             	HttpSession session = request.getSession();
             	session.setAttribute("name", name);
-            	session.setAttribute("level", level);
-            	response.sendRedirect("employee");
-            	
-            	
+            	level=dbconn.getLevel();
+        		System.out.println(level);
+        		session.setAttribute("level", level);
+        		response.sendRedirect("employee");
             	
                
             } else {

@@ -42,7 +42,9 @@ img{
     display: flex;
     flex-wrap: nowrap;
   background-color: white;
+  
 }
+
 a:link {
     text-decoration: none;
   }
