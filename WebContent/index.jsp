@@ -21,8 +21,9 @@
         </div>
        
         <div class="mirror" >
+            
             <H3>Sign In</H3>
-            <form action="login" method="POST" >
+            <form action="login" method="POST" style='display:inline' >
                 <div class="input">
                 <label for="name">User name</label><br>
                 <input type="text" id="fname" name="name"><br>
@@ -34,6 +35,7 @@
                 </div>
                 
             </form>
+            <div class="order"><h4>ORDER MANAGEMENT APPLICATION</h4></div>
 
         </div>
     

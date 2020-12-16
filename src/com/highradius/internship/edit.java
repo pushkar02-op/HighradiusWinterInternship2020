@@ -7,33 +7,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/add")
-public class add extends HttpServlet {
+
+@WebServlet("/edit")
+public class edit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
    
-    public add() {
+    public edit() {
         super();
     }
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int orderID = Integer.parseInt(request.getParameter("orderID"));
-		String orderDate = request.getParameter("orderDate");
-		String customerName = request.getParameter("CustomerName");
-		int customerID = Integer.parseInt(request.getParameter("CustomerNumber"));
-		int orderAmount =Integer.parseInt( request.getParameter("orderAmount"));
-		String notes = request.getParameter("Notes");
+		int orderID = Integer.parseInt(request.getParameter("orderID1"));
+		int orderAmount=Integer.parseInt( request.getParameter("orderAmount1"));
+		String notes = request.getParameter("Notes1");
 		Response resp = new Response();
 		resp.setOrder_id(orderID);
-		resp.setOrder_date(orderDate);
-		resp.setCust_name(customerName);
-		resp.setCust_id(customerID);
 		resp.setOrder_amt(orderAmount);
 		resp.setNotes(notes);
+		System.out.println(orderID);
 		try {
 			DbConnection dao = new DbConnection();
-			int status=dao.addData(resp);
+			int status=dao.editData(resp);
 			System.out.println(status);
 			if(status>0) {
 				response.sendRedirect("employee");

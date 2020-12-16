@@ -13,26 +13,22 @@
   margin-right: 5%;
   border-radius: 2em; 
   float: right;
- 
 }
 body
 {
-  font-family: "Century Gothic", sans-serif;
+font-family: "Century Gothic", sans-serif;
   
 }
 .mirror{
-  transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .logo{
   margin-top: 3em;
-  /* width: 5em; */
   padding-left: 3em;
 }
 .input{
-  /* margin-top: 10%; */
   margin-left: 60%;
-
 }
 input[type=text], input[type=password]{
 
@@ -45,7 +41,7 @@ input[type=text], input[type=password]{
 .button{
   margin-top: 10%;
   margin-left: 80%;
-  margin-bottom: 5em;
+  /* margin-bottom: 2em; */
   color: #838a8e;
   width: 20em;
 }
@@ -56,5 +52,18 @@ H3{
   padding-top: 10%;
   margin-left: 60%;
   color: #d8d8dd;
-  
+}
+.order{
+  width: 40%;
+  /* height: 80px; */
+  background-color: #8fd163;
+  color: white;
+  position: relative;
+  top: -238px;
+}
+.order h4{
+  font-size: 180%;
+  font-family: century gothic;
+  top: 12px;
+  margin-left: 5%;
 }

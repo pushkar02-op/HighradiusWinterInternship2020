@@ -1,3 +1,10 @@
+body{
+  line-height: 2;
+  font-size: 12;
+  color: #666666;
+  font: Century Gothic;
+}
+
 tr:nth-child(even) {
     background-color: #d9e6f1;
 }
@@ -7,20 +14,41 @@ tr:nth-child(even) {
     margin-left:  1em;
     margin-right: 1em;
     padding-top: 1%;
-    border: 8px solid rgb(165, 159, 159);
+    border: 8px solid #d8d8d8;
 }
 
 .dashlogo{
     margin-left: 3%;
     display: inline;
 }
-
+.btn-primary {
+  color: #fff;
+  background-color: #fc7500 !important;
+  border-color: #fc7500;
+  width: 7%;
+  margin-left:5;
+}
+#button{
+  border-color: #FC7500;
+  background-color:#FC7500 !important;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 .dashlogo1{
     margin-left: 25%;
     display: inline;  
 }
 img{
     padding-top: 1em;
+}
+h4{
+  padding-top: .5em;
 }
 .pages{
     display: flex;
@@ -33,30 +61,93 @@ img{
     width: 50px;
     margin: 10px;
     text-align: center;
-    line-height: 65px;
+    line-height: 35px; 
     font-size: 20px;
     display: inline;
-    border-radius: .5em;
+    border-radius: .2em;
 }
 .page-item{
     display: flex;
     flex-wrap: nowrap;
-  background-color: white;
-  
+  background-color: white; 
 }
-
-a:link {
+  a:link {
     text-decoration: none;
   }
-  
   a:visited {
     text-decoration: none;
   }
-  
   a:hover {
     text-decoration: underline;
   }
-  
   a:active {
     text-decoration: underline;
   }
+
+ form.search input[type=text] {
+  padding: 10px;
+  font-size: 12px;
+  border: none;
+  float: right;
+  width: 20%;
+  background: #d3e4eb;
+  margin-right: 2%; 
+} 
+form.popup label{
+margin-left: 10%;
+margin-top:5%;
+font-size: medium;
+font: roboto;
+
+}
+
+form.popup input[type=text], form.popup input[type=number],form.popup input[type=date]{
+  border: none;
+  border-bottom: 2px solid #d1cac3;
+  margin-left: 50px;
+}
+.model-title{
+border-bottom: 2px solid #d1cac3;	
+}
+
+form.popup input[type=submit]{
+  margin-left:50%;
+  margin-right:50%;
+  margin-top: 2em;
+}
+form.popup.search{
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+.search input#search{
+  width: 17%;
+  height: 40px;
+  background: #d3e4eb;
+  border: none;
+  font-size: 12pt;
+  float: right;
+  color: #63717f;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.icon{
+  
+  position: absolute;
+  float: right;
+  top: 21.5%;
+  bottom: 78.5%;
+  right: 18%;
+  color: #4fc4f7;
+  font-size: 20px;
+}
+table thead{
+  border-bottom: 1px solid #fc7500;
+}
+
+table{
+  border-collapse: collapse;
+}

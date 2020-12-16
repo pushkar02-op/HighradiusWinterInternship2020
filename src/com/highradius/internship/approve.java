@@ -6,35 +6,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/add")
-public class add extends HttpServlet {
+ 
+@WebServlet("/approve")
+public class approve extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
    
-    public add() {
+    public approve() {
         super();
+        
     }
-
-	
+  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int orderID = Integer.parseInt(request.getParameter("orderID"));
-		String orderDate = request.getParameter("orderDate");
-		String customerName = request.getParameter("CustomerName");
-		int customerID = Integer.parseInt(request.getParameter("CustomerNumber"));
-		int orderAmount =Integer.parseInt( request.getParameter("orderAmount"));
-		String notes = request.getParameter("Notes");
+		int orderID = Integer.parseInt(request.getParameter("orderid"));
+		System.out.println(orderID);
+		HttpSession session = request.getSession();
+		String name= session.getAttribute("name").toString();
 		Response resp = new Response();
 		resp.setOrder_id(orderID);
-		resp.setOrder_date(orderDate);
-		resp.setCust_name(customerName);
-		resp.setCust_id(customerID);
-		resp.setOrder_amt(orderAmount);
-		resp.setNotes(notes);
+		resp.setUsername(name);
 		try {
 			DbConnection dao = new DbConnection();
-			int status=dao.addData(resp);
-			System.out.println(status);
+			int status=dao.approveData(resp);
 			if(status>0) {
 				response.sendRedirect("employee");
 			}

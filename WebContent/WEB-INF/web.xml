@@ -28,15 +28,7 @@
     <url-pattern>/dummy.do</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-<servlet-name>DashboardServlet</servlet-name>
-<servlet-class>com.highradius.internship.DashboardServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-<servlet-name>DashboardServlet</servlet-name>
-<url-pattern>/DashboardServlet</url-pattern>
-</servlet-mapping>
+ 
   
 </web-app>
 </element>
