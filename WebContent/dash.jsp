@@ -19,7 +19,16 @@
 
 
    <body>
+    <%-- <%
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	
+		if(session.getAttribute("name") != null) {
+			response.sendRedirect("employee");
+		}
+	%> --%>
+   <c:if test="${not empty errorMessage }"><script>alert("${errorMessage}")</script></c:if>
    
+  
    
    <script>
   //  To find the order id of selected checkbox
@@ -27,7 +36,7 @@
 	   var checkboxes = document.getElementsByName('selected');
 	   var orderid=null; 
 	   for (var checkbox of checkboxes) {
-	     if (checkbox.checked && checkbox.value!=null){
+	     if (checkbox.checked ){
 	    	  orderid=parseInt(checkbox.value);  
 	     }
 	   }
@@ -54,20 +63,24 @@
                }
            } 
        }
-           else {
+            else {
         	      for(var i=0; i < ckName.length; i++){
         	        ckName[i].disabled = false; 
         	      }
-        	    }  
-           var x= document.getElementsByClassName("disable");
+        	    } 
+         var x= document.getElementsByClassName("disable");
+         var editButton=document.getElementById("edit-btn");
+           
            
            if (checked.checked) {
         	   x[1].disabled=false;
-        	   x[0].disabled=false; 
+        	    x[0].disabled=false; 
+        	   editButton.disabled=false;
            }
                else {
-            	      x[0].disabled=true;
-            	      x[1].disabled=true;
+            	       x[0].disabled=true;
+            	       x[1].disabled=true;
+            	      editButton.disabled=true;
             	    }
         	}
        
@@ -156,7 +169,7 @@
 
 
 
-<button  onclick="getValue();return false;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+<button  onclick="getValue();return false;" type="button" class="btn btn-primary " id="edit-btn" disabled data-toggle="modal" data-target="#exampleModal1" >
   EDIT
 </button>
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
@@ -199,12 +212,12 @@
   <div style='display:inline;'>
   <form action="approve" method="post" style='display:inline;'>
   <input type="hidden" id="OrderId" name="orderid" value="" style='display:inline;' class="getvalue">
-  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" style='display:inline;'disabled>APPROVE</button>
+  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" id="aprrove-btn" style='display:inline;'disabled>APPROVE</button>
   </form>
   
   <form action="reject" method="post" style='display:inline;'>
   <input type="hidden" id="OrderId1" name="orderid1" value="" style='display:inline;' class="getvalue">
-  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" style='display:inline;' disabled>REJECT</button>
+  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" id="reject-btn" style='display:inline;' disabled>REJECT</button>
   </form>
   </div>
   </c:if>
@@ -232,6 +245,7 @@
       </thead>
       <c:set var = "id" value = "1000" scope = "session" />
          <c:forEach var = "row" items = "${resultList}">
+         
             <tr>
             
                <td><label><input type="checkbox" name="selected" value="${row.order_id}" id="${id=id+1 }" onClick="ckChange(this)"></label></td>
@@ -297,8 +311,13 @@
         
      
       </c:if></div>
+      <h4 class="text">
+					Customers ${(currentPage - 1) * recordsPerPage + 1} - ${currentPage * recordsPerPage} of ${totalRows}
+				<h4>
       
       </div>
+
+      
     
  </div>
    </body>

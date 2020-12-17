@@ -111,16 +111,23 @@ border-bottom: 2px solid #d1cac3;
 }
 
 form.popup input[type=submit]{
-  margin-left:50%;
-  margin-right:50%;
+  margin-left:40%;
+  margin-right:60%;
   margin-top: 2em;
+  border-color: #FC7500;
+  background-color:#FC7500;
+  border: transparent;
+  padding: 8px 25px;
+  border-radius: .5em;
+  color: white;
+
 }
-form.popup.search{
+/* form.popup.search{
   width: 300px;
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
-}
+} */
 .search input#search{
   width: 17%;
   height: 40px;
@@ -150,4 +157,12 @@ table thead{
 
 table{
   border-collapse: collapse;
+}
+.text
+{
+  display: inline;
+  float:right;
+}
+h4.text{
+  margin-left: 53%;
 }

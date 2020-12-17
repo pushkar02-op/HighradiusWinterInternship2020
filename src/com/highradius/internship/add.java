@@ -37,6 +37,9 @@ public class add extends HttpServlet {
 			System.out.println(status);
 			if(status>0) {
 				response.sendRedirect("employee");
+			}else {
+				request.setAttribute("errorMessage", "Same Oder Id");
+				request.getRequestDispatcher("dash.jsp").forward(request,response);
 			}
 		} catch ( NumberFormatException e) {
 			

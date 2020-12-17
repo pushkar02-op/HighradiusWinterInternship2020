@@ -40,7 +40,6 @@ public class DummyServlet extends HttpServlet {
             	HttpSession session = request.getSession();
             	session.setAttribute("name", name);
             	level=dbconn.getLevel();
-//        		System.out.println(level);
         		session.setAttribute("level", level);
         		response.sendRedirect("employee");
             	

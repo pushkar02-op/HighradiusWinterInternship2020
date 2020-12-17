@@ -9,6 +9,7 @@ import com.highradius.internship.Response;
 
 public class DbConnection {
 private int totalNoOfRecords;
+private int totalNoOfRecordsForSearch;
 		
 		public static Connection getConnection() {
 			Connection con=null;
@@ -85,19 +86,26 @@ private int totalNoOfRecords;
 	        		};
 	        		return list;
   	  };
-	  public List<Response> searchData(String orderID, String level)throws SQLException, ClassNotFoundException 
+	  public List<Response> searchData(String orderID, String level,int offset,int noOfRecords)throws SQLException, ClassNotFoundException 
       
 	    {  
 		  List<Response> searchlist= new ArrayList<Response>();
 		  String query = null;
+		  String countRowsQuery=null;
 		  if(level.equals("Level 1")) {
-			  query="select * from order_details where Order_ID ="+orderID;
+			  query="select * from order_details where Order_ID Like '"+orderID+"%' limit "+offset+","+noOfRecords;
 		  }else if(level.equals("Level 2")) {
-			  query="select * from order_details where Order_ID ="+orderID+" and Order_Amount > 10000 and Order_Amount <= 50000";
+			  query="select * from order_details where Order_ID Like '"+orderID+"%' and Order_Amount > 10000 and Order_Amount <= 50000 limit "+offset+","+noOfRecords;
 		  }else if(level.equals("Level 3")) {
-			  query="select * from order_details where Order_ID ="+orderID+" and Order_Amount > 50000";
+			  query="select * from order_details where Order_ID Like '"+orderID+"%' and Order_Amount > 50000 limit "+offset+","+noOfRecords;
 		  }
 		  
+		  if(level.equals("Level 1"))
+			  countRowsQuery="SELECT COUNT(*) FROM order_details where Order_ID Like '"+orderID+"%'";
+		  else if(level.equals("Level 2"))
+				  countRowsQuery="SELECT COUNT(*) FROM order_details where Order_Amount > 10000 and Order_Amount <= 50000 and Order_ID Like '"+orderID+"%'"; 
+		  else if(level.equals("Level 3"))
+				  countRowsQuery="SELECT COUNT(*) FROM order_details where Order_Amount > 50000 and Order_ID Like '"+orderID+"%'"; 
 		  
 	        try(
 	        Connection connection =  DbConnection.getConnection();
@@ -121,8 +129,13 @@ private int totalNoOfRecords;
 	        					searchlist.add(resp);
 	        				}
 	        				rs.close();
+	        				PreparedStatement stmt = connection.prepareStatement(countRowsQuery);
+	        				rs=stmt.executeQuery();
+	        				if(rs.next()) {
+	        					this.totalNoOfRecordsForSearch=rs.getInt(1);
 	        				connection.close(); 
-	        }catch(SQLException e) {
+	        				}
+	        				}catch(SQLException e) {
    			 printSQLException(e);
    		};
    		return searchlist;
@@ -278,5 +291,8 @@ private int totalNoOfRecords;
 	  public int getNoOfRecords() {
 		  
 		  return totalNoOfRecords;
+	  }
+	  public int getNoOfRecordsForSearch(){
+		  return totalNoOfRecordsForSearch;
 	  }
 }

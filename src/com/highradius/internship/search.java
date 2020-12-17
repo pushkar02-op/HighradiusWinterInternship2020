@@ -26,13 +26,19 @@ public class search extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String orderID;
+		int page=1;
+		int recordsPerPage=10;
 		try {
 		if(request.getParameter("search")!=null) {
 			orderID= request.getParameter("search");
 			DbConnection dao = new DbConnection();
-			HttpSession session = request.getSession(false);
-			String level=(String) session.getAttribute("level");
-				List <Response> list = dao.searchData(orderID,level);
+			HttpSession session = request.getSession();
+			String level=session.getAttribute("level").toString();
+				List <Response> list = dao.searchData(orderID,level,(page-1)*recordsPerPage, recordsPerPage);
+				int noOfRecords= dao.getNoOfRecordsForSearch();
+				int noOfPages= (int)Math.ceil(noOfRecords*1.0/ recordsPerPage);
+				request.setAttribute("noOfPages",noOfPages );
+				request.setAttribute("currentPage",page );
 				request.setAttribute("resultList",list );
 				RequestDispatcher view= request.getRequestDispatcher("dash.jsp");
 				view.forward(request,response);

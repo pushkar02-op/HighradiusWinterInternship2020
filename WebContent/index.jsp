@@ -7,12 +7,19 @@
 
  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Order Management App</title>
     <link rel="stylesheet" href="css/index.css">
     <script src="index.js"></script>
 
 </head>
 <body>
+	<%-- <%
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	
+		if(session.getAttribute("name") == null) {
+			response.sendRedirect("index.jsp");
+		}
+	%> --%>
 
 
     <div class="container mirror">

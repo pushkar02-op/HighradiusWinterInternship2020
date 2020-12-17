@@ -25,7 +25,7 @@ public class reject extends HttpServlet {
 		int orderID = Integer.parseInt(request.getParameter("orderid1"));
 		System.out.println(orderID);
 		HttpSession session = request.getSession();
-		String name=(String) session.getAttribute("name");
+		String name= session.getAttribute("name").toString();
 		Response resp = new Response();
 		resp.setOrder_id(orderID);
 		resp.setUsername(name);

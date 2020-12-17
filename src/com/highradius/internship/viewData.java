@@ -27,7 +27,7 @@ public class viewData extends HttpServlet {
 		try {
 		if(request.getParameter("page")!= null) 
 			page=Integer.parseInt(request.getParameter("page"));
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		String level=(String) session.getAttribute("level");
 		DbConnection dao = new DbConnection();
 		List <Response> list = dao.viewData((page-1)*recordsPerPage, recordsPerPage,level);
@@ -39,6 +39,8 @@ public class viewData extends HttpServlet {
 		request.setAttribute("resultList",list );
 		request.setAttribute("noOfPages",noOfPages );
 		request.setAttribute("currentPage",page );
+		request.setAttribute("recordsPerPage", recordsPerPage);
+		request.setAttribute("totalRows", noOfRecords);
 		RequestDispatcher view= request.getRequestDispatcher("dash.jsp");
 		view.forward(request,response);
 		
