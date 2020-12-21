@@ -18,7 +18,7 @@ public class viewData extends HttpServlet {
     
     public viewData() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,12 +28,12 @@ public class viewData extends HttpServlet {
 		if(request.getParameter("page")!= null) 
 			page=Integer.parseInt(request.getParameter("page"));
 		HttpSession session = request.getSession();
-		String level=(String) session.getAttribute("level");
+		String level= session.getAttribute("level").toString();
 		DbConnection dao = new DbConnection();
 		List <Response> list = dao.viewData((page-1)*recordsPerPage, recordsPerPage,level);
-		while(list.size()<10) {
-			list.add(null);
-		}
+//		while(list.size()<10) {
+//			list.add(null);
+//		}
 		int noOfRecords= dao.getNoOfRecords();
 		int noOfPages= (int)Math.ceil(noOfRecords*1.0/ recordsPerPage);
 		request.setAttribute("resultList",list );

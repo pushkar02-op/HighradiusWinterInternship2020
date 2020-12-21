@@ -19,13 +19,7 @@
 
 
    <body>
-    <%-- <%
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	
-		if(session.getAttribute("name") != null) {
-			response.sendRedirect("employee");
-		}
-	%> --%>
+  
    <c:if test="${not empty errorMessage }"><script>alert("${errorMessage}")</script></c:if>
    
   
@@ -36,7 +30,7 @@
 	   var checkboxes = document.getElementsByName('selected');
 	   var orderid=null; 
 	   for (var checkbox of checkboxes) {
-	     if (checkbox.checked ){
+	     if (checkbox.checked && checkbox.value!=null){
 	    	  orderid=parseInt(checkbox.value);  
 	     }
 	   }
@@ -48,7 +42,7 @@
 	 }
        
        
-       
+       //for chechboxes
        function ckChange(ckType){
            var ckName = document.getElementsByName(ckType.name);
            var checked = document.getElementById(ckType.id);
@@ -67,25 +61,25 @@
         	      for(var i=0; i < ckName.length; i++){
         	        ckName[i].disabled = false; 
         	      }
-        	    } 
-         var x= document.getElementsByClassName("disable");
-         var editButton=document.getElementById("edit-btn");
-           
-           
+              } 
+              
+          //for approve and reject buttons
+         var x= document.getElementsByClassName("disable");        
+    
            if (checked.checked) {
         	   x[1].disabled=false;
         	    x[0].disabled=false; 
-        	   editButton.disabled=false;
+        	  
            }
                else {
             	       x[0].disabled=true;
             	       x[1].disabled=true;
-            	      editButton.disabled=true;
+            	     
             	    }
         	}
        
        
-       
+       //to auto populate data
        function checkAmount() {
     	   var name=null;
     	   var amount = document.getElementById("orderAmnt1");
@@ -106,9 +100,24 @@
        
        function validateForm() {
     	   var x = document.forms["myForm"]["orderID"].value;
-    	   if (x == ""||x==null) {
-    	     alert("Order Id must be filled out");
+    	   var y = document.forms["myForm"]["orderDate"].value;
+    	   var z = document.forms["myForm"]["CustomerNumber"].value;
+    	   var a = document.forms["myForm"]["orderAmount"].value;
+    	   if (x == ""||x==null||x<=0) {
+    	     alert("Order Id must be positive number");
     	     return false;
+    	   }
+    	   if(y==''|| y==null || y<=0){
+    		   alert("Wrong Date Input");
+    		   return false;
+    	   }
+    	   if(z==''|| z==null || z<=0){
+    		   alert("Wrong Number Input");
+    		   return false;
+    	   }
+    	   if(a==''|| a==null || a<=0){
+    		   alert("Wrong Amount Input");
+    		   return false;
     	   }
     	 }
       
@@ -169,7 +178,7 @@
 
 
 
-<button  onclick="getValue();return false;" type="button" class="btn btn-primary " id="edit-btn" disabled data-toggle="modal" data-target="#exampleModal1" >
+<button  onclick="getValue();return false;" type="button" class="btn btn-primary " id="edit-btn" data-toggle="modal" data-target="#exampleModal1" >
   EDIT
 </button>
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
@@ -271,14 +280,14 @@
       <a class="page-link" href="employee?page=1" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
       
       </c:if>
-         </div>
+    </div>
     <div>  
       <c:if test="${currentPage!=1}">
        
       <a class="page-link" href="employee?page=${currentPage-1 }" aria-label="Previous" ><</a>
      
       </c:if>
-       </div>
+    </div>
     
     <h4> Page</h4>
     
@@ -294,7 +303,7 @@
       </c:forEach>
      
       
-      </div>
+    </div>
       <h4> of ${noOfPages} </h4>
     <div>
        <c:if test="${currentPage lt noOfPages}">
@@ -303,7 +312,7 @@
         
       
       </c:if>
-      </div>
+    </div>
     <div>
       <c:if test="${currentPage lt noOfPages}">
       
@@ -313,9 +322,9 @@
       </c:if></div>
       <h4 class="text">
 					Customers ${(currentPage - 1) * recordsPerPage + 1} - ${currentPage * recordsPerPage} of ${totalRows}
-				<h4>
+				</h4>
       
-      </div>
+    </div>
 
       
     

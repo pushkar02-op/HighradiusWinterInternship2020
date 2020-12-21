@@ -35,11 +35,13 @@ public class search extends HttpServlet {
 			HttpSession session = request.getSession();
 			String level=session.getAttribute("level").toString();
 				List <Response> list = dao.searchData(orderID,level,(page-1)*recordsPerPage, recordsPerPage);
+				
 				int noOfRecords= dao.getNoOfRecordsForSearch();
 				int noOfPages= (int)Math.ceil(noOfRecords*1.0/ recordsPerPage);
 				request.setAttribute("noOfPages",noOfPages );
 				request.setAttribute("currentPage",page );
 				request.setAttribute("resultList",list );
+				request.setAttribute("totalRows", noOfRecords);
 				RequestDispatcher view= request.getRequestDispatcher("dash.jsp");
 				view.forward(request,response);
 		}
