@@ -24,104 +24,7 @@
    
   
    
-   <script>
-  //  To find the order id of selected checkbox
-       function getValue() {
-	   var checkboxes = document.getElementsByName('selected');
-	   var orderid=null; 
-	   for (var checkbox of checkboxes) {
-	     if (checkbox.checked && checkbox.value!=null){
-	    	  orderid=parseInt(checkbox.value);  
-	     }
-	   }
-       var x= document.getElementsByClassName("getvalue");
-       x[0].value=orderid;
-       x[1].value=orderid;
-       x[2].value=orderid;
-       
-	 }
-       
-       
-       //for chechboxes
-       function ckChange(ckType){
-           var ckName = document.getElementsByName(ckType.name);
-           var checked = document.getElementById(ckType.id);
-
-           if (checked.checked) {
-			
-           for(var i=0; i < ckName.length; i++){
-               if(!ckName[i].checked){
-                   ckName[i].disabled = true;
-               }else{
-                   ckName[i].disabled = false;
-               }
-           } 
-       }
-            else {
-        	      for(var i=0; i < ckName.length; i++){
-        	        ckName[i].disabled = false; 
-        	      }
-              } 
-              
-          //for approve and reject buttons
-         var x= document.getElementsByClassName("disable");        
-    
-           if (checked.checked) {
-        	   x[1].disabled=false;
-        	    x[0].disabled=false; 
-        	  
-           }
-               else {
-            	       x[0].disabled=true;
-            	       x[1].disabled=true;
-            	     
-            	    }
-        	}
-       
-       
-       //to auto populate data
-       function checkAmount() {
-    	   var name=null;
-    	   var amount = document.getElementById("orderAmnt1");
-           var approvalBy = document.getElementById("approvalBy");
-           if(amount.value<=10000){
-        	   name="David Lee";
-           }
-           else if((10000<amount.value) && (amount.value<=50000)){
-        	   name="Laura Smith";
-           }
-           else if(amount.value>50000){
-        	   name="Matthew Vance";
-           }
-           approvalBy.value= name;
-        	   
-       }
-
-       
-       function validateForm() {
-    	   var x = document.forms["myForm"]["orderID"].value;
-    	   var y = document.forms["myForm"]["orderDate"].value;
-    	   var z = document.forms["myForm"]["CustomerNumber"].value;
-    	   var a = document.forms["myForm"]["orderAmount"].value;
-    	   if (x == ""||x==null||x<=0) {
-    	     alert("Order Id must be positive number");
-    	     return false;
-    	   }
-    	   if(y==''|| y==null || y<=0){
-    		   alert("Wrong Date Input");
-    		   return false;
-    	   }
-    	   if(z==''|| z==null || z<=0){
-    		   alert("Wrong Number Input");
-    		   return false;
-    	   }
-    	   if(a==''|| a==null || a<=0){
-    		   alert("Wrong Amount Input");
-    		   return false;
-    	   }
-    	 }
-      
-       </script>
+  
   
    
   
@@ -135,6 +38,7 @@
      
   <div class="board">
   <c:if test="${level=='Level 1' }">
+  
   
   <!-- Button trigger modal -->
 <button  type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal" >
@@ -178,7 +82,7 @@
 
 
 
-<button  onclick="getValue();return false;" type="button" class="btn btn-primary " id="edit-btn" data-toggle="modal" data-target="#exampleModal1" >
+<button   type="button" class="btn btn-primary " id="edit-btn" disabled data-toggle="modal" data-target="#exampleModal1" >
   EDIT
 </button>
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
@@ -202,7 +106,7 @@
         <label for="ApprovalBy">Approval By</label>
         
         
-        <input type="text" name="ApprovalBy" id="approvalBy" value=""readonly><br>
+        <input type="text" name="ApprovalBy" id="approvalBy" value="" readonly><br>
         	<div class="button">
          <input type="submit" value="SUBMIT">
         </div>
@@ -214,21 +118,135 @@
   </div>
 </div>
 
+ <script>
+   function handleCheckbox(checkbox) {
+		var btnEdit = document.getElementById("edit-btn");
+		var tableRow = checkbox.parentNode.parentNode.parentNode;
+		if(checkbox.checked) {
+			btnEdit.disabled = false;
+			
+			tableRow.classList.add("table-active");
+			var inputField1 = document.getElementById("orderid1");
+			var inputField2 = document.getElementById("orderAmnt1");
+			var inputField3 = document.getElementById("notes1");
+			inputField1.value = tableRow.cells[3].innerHTML;
+			inputField2.value = tableRow.cells[6].innerHTML;
+			inputField3.value = tableRow.cells[8].innerHTML;
+			 var approvalBy = document.getElementById("approvalBy");
+	           if(inputField2.value<=10000){
+	        	   name="David_Lee";
+	           }
+	           else if((10000<inputField2.value) && (inputField2.value<=50000)){
+	        	   name="Laura Smith";
+	           }
+	           else if(inputField2.value>50000){
+	        	   name="Matthew Vance";
+	           }
+	           approvalBy.value= name;
+			
+		}
+		else {
+			btnEdit.disabled = true;
+			
+			tableRow.classList.remove("table-active");
+		}
+		var chk = checkbox.parentNode.parentNode.parentNode.parentNode;
+		var checkList = chk.getElementsByTagName("input");
+		for(var i = 0; i < checkList.length; i++) {
+			if(checkList[i] != checkbox && checkbox.checked) {
+				checkList[i].checked = false;
+				checkList[i].parentNode.parentNode.parentNode.classList.remove("table-active");
+			}
+		}
+	}
+       
+       function checkAmount() {
+    	   var name=null;
+    	   var amount = document.getElementById("orderAmnt1");
+    	   console.log(amount);
+           var approvalBy = document.getElementById("approvalBy");
+           console.log(approvalBy);
+           if(amount.value<=10000){
+        	   name="David Lee";
+           }
+           else if((10000<amount.value) && (amount.value<=50000)){
+        	   name="Laura Smith";
+           }
+           else if(amount.value>50000){
+        	   name="Matthew Vance";
+           }
+           approvalBy.value= name;
+        	   
+       }
 
+       
+       function validateForm() {
+    	   var x = document.forms["myForm"]["orderID"].value;
+    	   var y = document.forms["myForm"]["orderDate"].value;
+    	   var z = document.forms["myForm"]["CustomerNumber"].value;
+    	   var a = document.forms["myForm"]["orderAmount"].value;
+    	   if (x == ""||x==null||x<=0) {
+    	     alert("Order Id must be positive number");
+    	     return false;
+    	   }
+    	   if(y==''|| y==null || y<=0){
+    		   alert("Wrong Date Input");
+    		   return false;
+    	   }
+    	   if(z==''|| z==null || z<=0){
+    		   alert("Wrong Number Input");
+    		   return false;
+    	   }
+    	   if(a==''|| a==null || a<=0){
+    		   alert("Wrong Amount Input");
+    		   return false;
+    	   }
+    	 }
+      
+       </script>
   </c:if>
   
   <c:if test="${level=='Level 2' || level=='Level 3' }">
   <div style='display:inline;'>
   <form action="approve" method="post" style='display:inline;'>
   <input type="hidden" id="OrderId" name="orderid" value="" style='display:inline;' class="getvalue">
-  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" id="aprrove-btn" style='display:inline;'disabled>APPROVE</button>
+  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" id="aprroveBtn" style='display:inline;'disabled>APPROVE</button>
   </form>
   
   <form action="reject" method="post" style='display:inline;'>
   <input type="hidden" id="OrderId1" name="orderid1" value="" style='display:inline;' class="getvalue">
-  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" id="reject-btn" style='display:inline;' disabled>REJECT</button>
+  <button onclick="getValue();return false;" type="submit" class="btn btn-primary disable" id="rejectBtn" style='display:inline;' disabled>REJECT</button>
   </form>
   </div>
+  
+  	<script>
+                		function handleCheckbox(checkbox) {
+                			var tableRow = checkbox.parentNode.parentNode.parentNode;
+                			var x= document.getElementsByClassName("disable");
+                			if(checkbox.checked) {
+                				x[0].disabled = false;
+                				x[1].disabled = false;
+                				tableRow.classList.add("table-active");
+                				var inputField1 = document.getElementById("OrderId");
+                				var inputField2 = document.getElementById("OrderId1");
+                				inputField1.value = tableRow.cells[3].innerHTML;
+                				inputField2.value = tableRow.cells[3].innerHTML;
+                			}
+                			else {
+                				x[0].disabled = true;
+                				x[1].disabled = true;
+                				tableRow.classList.remove("table-active");
+                			}
+                			var chk = checkbox.parentNode.parentNode.parentNode.parentNode;
+                			var checkList = chk.getElementsByTagName("input");
+                			for(var i = 0; i < checkList.length; i++) {
+                				if(checkList[i] != checkbox && checkbox.checked) {
+                					checkList[i].checked = false;
+                					checkList[i].parentNode.parentNode.parentNode.classList.remove("table-active");
+                				}
+                			}
+                		}
+                	</script>
   </c:if>
   
   <div class="search" style='display:inline;'>
@@ -257,7 +275,7 @@
          
             <tr>
             
-               <td><label><input type="checkbox" name="selected" value="${row.order_id}" id="${id=id+1 }" onClick="ckChange(this)"></label></td>
+               <td><label><input type="checkbox"  id="checkbox" onClick="handleCheckbox(this)"></label></td>
                <td><c:out value = "${row.order_date}"/></td>
                <td><c:out value = "${row.approved_by}"/></td>
                <td><c:out value = "${row.order_id}"/></td>
