@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.highradius.internship.Response;
 
 public class DatabaseConnection {
 	private String level;

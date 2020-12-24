@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-import com.highradius.internship.Response;
+
 
 public class DbConnection {
 private int totalNoOfRecords;
