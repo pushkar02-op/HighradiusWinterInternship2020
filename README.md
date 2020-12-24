@@ -4,7 +4,7 @@
 ![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/LoginPage.png)
 # Level 1 user Dashboard
 ![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/Dashboard1.png)
-# Edit Button Disabled
+# Edit Button abled when checkboxes are selected
 ![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/Dashboard2.png)
 # Add button Popup
 ![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/Popup1.png)
