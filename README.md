@@ -1,13 +1,24 @@
-# Highradius Winter Internship Dummy Project
+# Highradius Winter Internship  Project
 
-> Before proceeding ahead with this workspace setup, please ensure that you have
-> downloaded and installed the required software stack.
+- [Link to the PRS:][PRS]
 
-Please follow the below mentioned steps to clone this repository:
-1) Click on 'Clone or Download' button and copy the web URL.
-2) Open git bash on your desktop and type "git clone <copied web URL of repo>".
-3) The repo will be cloned to your local System.
-4) If you don't have git installed on your system, you can follow the the steps mentioned here(https://phoenixnap.com/kb/how-to-install-git-windows) to install git.
-5) Alternatively, you can download a zip file from the git repo to skip the cloning process.
+# Login Page
+![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/LoginPage.png)
+# Level 1 user Dashboard
+![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/Dashboard1.png)
+# Edit Button enabled when checkboxes are selected
+![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/Dashboard2.png)
+# Add button Popup
+![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/Popup1.png)
+# Edit button Popup
+![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/popup2.png)
+# Level 2 user Dashboard, buttons disabled without selecting the checkboxes
+![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/Approve.png)
+# buttons enabled when checkboxes are selected
+![alt text](https://raw.githubusercontent.com/pushkar02-op/Mytaskimages/master/HighradiusRepoImages/approve1.png)
 
-Once you have successfully cloned the repository, please follow this video reference(https://youtu.be/6mISXw7xUTg) to setup the local workspace.
+
+Full Project Completed 
+---
+
+[PRS]:https://github.com/pushkar02-op/Mytaskimages/blob/master/HighradiusRepoImages/HighRadius%20Tech%20Track%20Winter%20Internship%20PRS.pdf
